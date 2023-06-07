@@ -66,5 +66,11 @@ db.usuarios.updateOne({$and: [{ Edad: { $gte: 20 }},{Apellido: "López"}]}, {$se
 
 db.usuarios.find({Ciudad: {$in:["San Sebastián", "Irún"]}})
 
+
+db.usuarios.find({Profesion: {$exists: false}})
+
+db.usuarios.updateMany({Profesion: {$exists: false}},{$set: {Profesion: "Parado"}})
+
+
 db.usuarios.updateMany({ Edad: { $gte: 65 }}, {$set: {Profesion: "Jubilado"}})
 
