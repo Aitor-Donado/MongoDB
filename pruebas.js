@@ -31,6 +31,9 @@ db.usuarios.updateMany({Nombre: "Anabel"},{$set: {Edad: 25, Ciudad: "Hondarribia
 
 db.usuarios.updateMany({Nombre: "David"},{$set: {Edad: 27, Ciudad: "Irun"}})
 
+db.usuarios.updateMany({Nombre: "Pedro"},{$set: {Edad: 45, Ciudad: "San Sebastián"}})
 
-db.usuarios.find({Edad: {$gt: 34}}).sort({Nombre :1})
-
+// Mayor que 45 años
+db.usuarios.find({Edad: {$gt: 45}}).sort({Nombre :1})
+// Mayor o igual de 45 años
+db.usuarios.find({Edad: {$gte: 45}}).sort({Nombre :1})
