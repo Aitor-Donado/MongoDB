@@ -10,8 +10,6 @@ db.usuarios.find()
 
 db.usuarios.insertMany([{"Nombre": "Txomin","Apellido": "López"},{"Nombre": "Anabel","Apellido": "Gómez"},{"Nombre": "Denis","Apellido": "Almandoz"}, {"Nombre": "David","Apellido": "Tobias"}])
 
-<<<<<<< HEAD
-=======
 
 db.usuarios.find({Nombre:"Anabel"})
 db.usuarios.find({Apellido: "Gómez"})
