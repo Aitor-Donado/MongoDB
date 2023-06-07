@@ -55,4 +55,13 @@ db.usuarios.updateMany({}, {$rename: {Oficio: "Profesion"}})
 // Borrar
 db.usuarios.deleteOne({Nombre: "Txomin"})
 
-db.usuarios.updateMany({ Edad: { $lte: 18 }, {$set: {Edad: 18}} })
+db.usuarios.updateMany({ Edad: { $lte: 18 }}, {$set: {Edad: 18}})
+
+db.usuarios.find({$and: [{ Edad: { $gte: 20 }},{Apellido: "López"}]})
+
+db.usuarios.find({$or: [{ Edad: { $gte: 50 }},{Apellido: "López"}]})
+
+db.usuarios.updateOne({$and: [{ Edad: { $gte: 20 }},{Apellido: "López"}]}, {$set: {Profesion: "Profesor"}})
+
+
+db.usuarios.find({Ciudad: {$in:["San Sebastián", "Irún"]}})
