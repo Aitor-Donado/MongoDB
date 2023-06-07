@@ -18,3 +18,12 @@ db.usuarios.findOne({Apellido: "Gómez"})
 
 db.usuarios.find({Apellido: "Gómez"}).count()
 
+db.usuarios.find({Apellido: "Gómez"}).limit(1)
+
+// Ordenar la salida
+db.usuarios.find().sort({Nombre :1})
+db.usuarios.find().sort({Nombre :-1})
+
+db.usuarios.updateOne({Nombre: "David"},{$set: {Nombre: "David Tobías"}})
+
+
