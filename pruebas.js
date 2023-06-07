@@ -35,3 +35,4 @@ db.usuarios.updateMany({Nombre: "Pedro"},{$set: {Edad: 45, Ciudad: "San SebastiÃ
 
 db.usuarios.find({Edad: {$gt: 34}}).sort({Nombre :1})
 
+db.usuarios.updateMany({ Edad: { $lte: 18 }, {$set: {Edad: 18}} })
