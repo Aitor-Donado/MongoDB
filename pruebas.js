@@ -74,3 +74,12 @@ db.usuarios.updateMany({Profesion: {$exists: false}},{$set: {Profesion: "Parado"
 
 db.usuarios.updateMany({ Edad: { $gte: 65 }}, {$set: {Profesion: "Jubilado"}})
 
+db.usuarios.find().sort({Edad: -1}).limit(1)
+
+// Expresiones regulares
+db.usuarios.find({Apellido: /ez$/})
+db.usuarios.find({Apellido: /^A/})
+
+db.usuarios.find({Apellido: /\w+(?:\s\w+)+/})
+
+
