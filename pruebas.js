@@ -33,5 +33,8 @@ db.usuarios.updateMany({Nombre: "David"},{$set: {Edad: 27, Ciudad: "Irun"}})
 
 db.usuarios.updateMany({Nombre: "Pedro"},{$set: {Edad: 45, Ciudad: "San Sebastián"}})
 
-db.usuarios.find({Edad: {$gt: 34}}).sort({Nombre :1})
+// Mayor de 34
+db.usuarios.find({Edad: {$gt: 45}}).sort({Nombre :1})
+// Mayor o igual de 34
+db.usuarios.find({Edad: {$gte: 45}}).sort({Nombre :1})
 
