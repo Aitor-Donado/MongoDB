@@ -29,4 +29,8 @@ db.usuarios.updateOne({Nombre: "David Tobías"},{$set: {Apellido: "Martín"}})
 
 db.usuarios.updateMany({Nombre: "Anabel"},{$set: {Edad: 25, Ciudad: "Hondarribia"}})
 
+db.usuarios.updateMany({Nombre: "David"},{$set: {Edad: 27, Ciudad: "Irun"}})
+
+
+db.usuarios.find({Edad: {$gt: 34}}).sort({Nombre :1})
 
