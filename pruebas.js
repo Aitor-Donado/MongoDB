@@ -25,5 +25,8 @@ db.usuarios.find().sort({Nombre :1})
 db.usuarios.find().sort({Nombre :-1})
 
 db.usuarios.updateOne({Nombre: "David"},{$set: {Nombre: "David Tobías"}})
+db.usuarios.updateOne({Nombre: "David Tobías"},{$set: {Apellido: "Martín"}})
+
+db.usuarios.updateMany({Nombre: "Anabel"},{$set: {Edad: 25, Ciudad: "Hondarribia"}})
 
 
