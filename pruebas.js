@@ -83,3 +83,10 @@ db.usuarios.find({Apellido: /^A/})
 db.usuarios.find({Apellido: /\w+(?:\s\w+)+/})
 
 
+db.usuarios.find({Profesion: "Programador"}, {Nombre:true, Apellido:true})
+
+db.usuarios.find({Profesion: "Programador"}, {Edad:false, Profesion: false})
+
+db.usuarios.updateOne({Nombre: "Denis", Apellido: "Almandoz"}, {$set: {DNI: "12345678J"}})
+
+db.usuarios.updateOne({Nombre: "Denis", Apellido: "Almandoz"}, {$unset: {DNI: true}})
