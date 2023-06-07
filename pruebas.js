@@ -10,3 +10,30 @@ db.usuarios.find()
 
 db.usuarios.insertMany([{"Nombre": "Txomin","Apellido": "López"},{"Nombre": "Anabel","Apellido": "Gómez"},{"Nombre": "Denis","Apellido": "Almandoz"}, {"Nombre": "David","Apellido": "Tobias"}])
 
+<<<<<<< HEAD
+=======
+
+db.usuarios.find({Nombre:"Anabel"})
+db.usuarios.find({Apellido: "Gómez"})
+
+db.usuarios.findOne({Apellido: "Gómez"})
+
+db.usuarios.find({Apellido: "Gómez"}).count()
+
+db.usuarios.find({Apellido: "Gómez"}).limit(1)
+
+// Ordenar la salida
+db.usuarios.find().sort({Nombre :1})
+db.usuarios.find().sort({Nombre :-1})
+
+db.usuarios.updateOne({Nombre: "David"},{$set: {Nombre: "David Tobías"}})
+db.usuarios.updateOne({Nombre: "David Tobías"},{$set: {Apellido: "Martín"}})
+
+db.usuarios.updateMany({Nombre: "Anabel"},{$set: {Edad: 25, Ciudad: "Hondarribia"}})
+
+db.usuarios.updateMany({Nombre: "David"},{$set: {Edad: 27, Ciudad: "Irun"}})
+
+
+db.usuarios.find({Edad: {$gt: 34}}).sort({Nombre :1})
+
+>>>>>>> 2e1e2d9ce147c53a5a3b64cea0d79841a10c7d9d
