@@ -19,27 +19,33 @@ db.usuarios.find()
 
 db.usuarios.insertMany([{"Nombre": "Txomin","Apellido": "López"},{"Nombre": "Anabel","Apellido": "Gómez"},{"Nombre": "Denis","Apellido": "Almandoz"}, {"Nombre": "David","Apellido": "Tobias"}])
 
-
+// Busco todos los que cumplen la condición
 db.usuarios.find({Nombre:"Anabel"})
 db.usuarios.find({Apellido: "Gómez"})
 
+// Busco el primero que cumple la condición
 db.usuarios.findOne({Apellido: "Gómez"})
 
 db.usuarios.find({Apellido: "Gómez"}).count()
 
 db.usuarios.find({Apellido: "Gómez"}).limit(1)
 
+// Obtener el elemento 5
+db.usuarios.find().skip(4).limit(1)
+
 // Ordenar la salida
 db.usuarios.find().sort({Nombre :1})
-db.usuarios.find().sort({Nombre :-1})
+db.usuarios.find().sort({Apellido :-1})
 
+// Modificar documentos (registros)
+// Sólo un documento (el primer documento)
 db.usuarios.updateOne({Nombre: "David"},{$set: {Nombre: "David Tobías"}})
 db.usuarios.updateOne({Nombre: "David Tobías"},{$set: {Apellido: "Martín"}})
 
+// Muchos documentos
 db.usuarios.updateMany({Nombre: "Anabel"},{$set: {Edad: 25, Ciudad: "Hondarribia"}})
-
 db.usuarios.updateMany({Nombre: "David"},{$set: {Edad: 27, Ciudad: "Irun"}})
-
+//Cada vez que actualizo una clave nueva, se crea la clave
 db.usuarios.updateMany({Nombre: "Pedro"},{$set: {Edad: 45, Ciudad: "San Sebastián"}})
 
 // Mayor de 34
