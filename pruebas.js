@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 // Crear la base de datos
+>>>>>>> f8f94d742154d4b95bb70cc3c2cbd6089a640578
 //use videoclubDB
 
 // Mostrar las bases de datos creadas
@@ -105,4 +108,3 @@ db.usuarios.find({Profesion: "Programador"}, {Edad:false, Profesion: false})
 db.usuarios.updateOne({Nombre: "Denis", Apellido: "Almandoz"}, {$set: {DNI: "12345678J"}})
 
 db.usuarios.updateOne({Nombre: "Denis", Apellido: "Almandoz"}, {$unset: {DNI: true}})
-
