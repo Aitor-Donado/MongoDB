@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 // Crear la base de datos
->>>>>>> f8f94d742154d4b95bb70cc3c2cbd6089a640578
 //use videoclubDB
 
 // Mostrar las bases de datos creadas
@@ -55,10 +52,14 @@ db.usuarios.updateMany({Nombre: "Pedro"},{$set: {Edad: 45, Ciudad: "San Sebasti�
 db.usuarios.find({Edad: {$gt: 45}}).sort({Nombre :1})
 // Mayor o igual de 34
 db.usuarios.find({Edad: {$gte: 45}}).sort({Nombre :1})
+// menores lt, y menores o iguales lte
+db.usuarios.find({Edad: {$lt: 27}}).sort({Nombre :1})
+db.usuarios.find({Edad: {$lte: 27}}).sort({Nombre :1})
 
+// Añadir la clave Oficio a todos los documentos. La clave Oficio tiene el valor por defecto "Programador"
 db.usuarios.updateMany({},{$set:{Oficio: "Programador"}})
 
-
+// update en documento inexistente lo crea si lleva upsert:true
 db.usuarios.updateOne({Nombre: "Perico", Apellido: "De Los Palotes"},{$set: {Nombre: "Perico", Edad: 67, Ciudad: "Toledo"}},{upsert:true})
 
 // Incremento de una variable numérica
