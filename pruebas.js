@@ -1,4 +1,4 @@
-use videoclubDB
+//use videoclubDB
 
 db.createCollection('usuarios')
 
