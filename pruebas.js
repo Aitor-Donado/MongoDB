@@ -200,9 +200,6 @@ db.usuarios.updateOne({Nombre: "Txomin"}, {$push: {Peliculas: lista_anabel}})
 // A la segunda película de Anabel le añado el protagonista
 db.usuarios.updateOne({Nombre: "Anabel"}, {$set: {"Peliculas.2.Protagonista": "Bill Murray"}})
 
-
-
-
-
-//////
-db.usuarios.findOne({Nombre: "Anabel"}, {$set :"Peliculas.$": true})
+db.usuarios.find({Nombre: "Anabel", Apellido: 'Olguín'})
+db.usuarios.updateOne({ Nombre: "Anabel", "Peliculas.Titulo": "Regreso al Futuro" },{ $set: { "Peliculas.$.Parte": 3 } });
+db.usuarios.find({Nombre: "Anabel", Apellido: 'Olguín'})
