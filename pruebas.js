@@ -139,7 +139,7 @@ direccion = {Calle : "De la Era", Numero: 12, Piso: 1, CP: 20100, Provincia: "Gi
 db.usuarios.updateOne({Nombre: "Txomin"},{$set: {Direccion: direccion}})
 db.usuarios.find()
 
-// Pongo la dirección de Txomin
+// Pongo la dirección de Perico
 direccion = {Calle : "Kalea", Numero: "11A", Piso: 1, mano: "A Izq", CP: 20100, Provincia: "Gipuzkoa"}
 db.usuarios.updateOne({Nombre: "Perico"},{$set: {Direccion: direccion}})
 db.usuarios.find()
@@ -151,4 +151,16 @@ db.usuarios.updateMany({},{$set: {Local: local}})
 db.usuarios.find()
 
 local2 =  {Calle : "Gran Vía", Numero: 15, Piso: "Bajo", CP: 20012, Provincia: "Gipuzkoa"}
+
+// Asignar el local 2 a todos los usuarios que viven en el CP 20012
+db.usuarios.updateMany({"Direccion.CP": 20012}, {$set: {Local: local2}})
+
+// Añadir dos usuarios más
+Juan = {Apellido: 'Rodriguez',Nombre: 'Juan', Ciudad: 'San Sebastián', Edad: 33, Profesion: 'Albañil', Direccion: {Calle: 'Mayor',Numero: '12',Piso: 13,mano: 'B Izq',CP: 20015,Provincia: 'Gipuzkoa'},Local: {Calle: 'Picasso',Numero: 27,Piso: 'Bajo',CP: 20110,Provincia: 'Gipuzkoa'}}
+Luis = {Apellido: 'Suárez',Nombre: 'Luis', Ciudad: 'San Sebastián', Edad: 60, Profesion: 'Entrenador', Direccion: {Calle: 'Calleja',Numero: '10',Piso: 2,CP: 20013,Provincia: 'Gipuzkoa'},Local: {Calle: 'Picasso',Numero: 27,Piso: 'Bajo',CP: 20110,Provincia: 'Gipuzkoa'}}
+
+db.usuarios.insertOne(Juan)
+db.usuarios.insertOne(Luis)
+
+// Cambiar el local a los que tienen CP entre 20013 y 20020
 
