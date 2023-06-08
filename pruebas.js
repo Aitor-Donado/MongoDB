@@ -163,4 +163,17 @@ db.usuarios.insertOne(Juan)
 db.usuarios.insertOne(Luis)
 
 // Cambiar el local a los que tienen CP entre 20013 y 20020
+condicion1 = {"Direccion.CP": {$lte: 20020}}
+condicion2 = {"Direccion.CP": {$gte: 20013}}
+db.usuarios.find({$and: [condicion1,condicion2]})
 
+db.usuarios.updateMany({$and: [condicion1,condicion2]}, {$set: {Local: local2}})
+// Otra Forma
+condicion = {"Direccion.CP": {$gte: 20013, $lte: 20020}}
+db.usuarios.updateMany(condicion, {$set: {Local: local2}})
+
+
+// Añado la clave "Películas" a todos los usuarios (sin valor por defecto)
+db.usuarios.updateMany({},{$set: {Peliculas: []}})
+// Añado un elemento a a la lista de la clave Películas
+db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: {Título: "Lo que el viento se llevó", Director: "Victor Fleming"}}})
