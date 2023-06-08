@@ -100,12 +100,17 @@ db.usuarios.updateMany({Profesion: {$exists: false}},{$set: {Profesion: "Parado"
 db.usuarios.updateMany({ Edad: { $gte: 65 }}, {$set: {Profesion: "Jubilado"}})
 
 // Expresiones regulares
+// Devuelve todos los que tengan apellido terminado en ez
 db.usuarios.find({Apellido: /ez$/})
+// Devuelve todos los que tengan apellido empezando en A
 db.usuarios.find({Apellido: /^A/})
 
+// Devuelve todos los que tienen apellido compuesto
 db.usuarios.find({Apellido: /\w+(?:\s\w+)+/})
+// nombre compuesto
+db.usuarios.find({Nombre: /\w+(?:\s\w+)+/})
 
-
+// Seleccionamos los campos que deseamos en la salida
 db.usuarios.find({Profesion: "Programador"}, {Nombre:true, Apellido:true})
 
 db.usuarios.find({Profesion: "Programador"}, {Edad:false, Profesion: false})
