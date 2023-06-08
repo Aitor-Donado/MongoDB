@@ -1,6 +1,15 @@
+// Crear la base de datos
 //use videoclubDB
 
+// Mostrar las bases de datos creadas
+//show database
+
+// VideoclubDB no aparecerá hasta que le introduzcamos datos
+
+// crear la colección
 db.createCollection('usuarios')
+// Añadir el primer dato.
+
 
 db.usuarios.insertOne({"Nombre" : "Pedro", "Apellido" : "López"})
 usuario2 = {"Nombre" : "Luis", "Apellido" : "Gómez"}
