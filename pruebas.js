@@ -194,7 +194,7 @@ db.usuarios.updateOne({Nombre: "Anabel", Apellido: 'Olguín'}, {$pull: {Pelicula
 db.usuarios.find({Nombre: "Anabel", Apellido: 'Olguín'})
 
 // Copio la lista de películas de Anabel y se las pongo a Txomin
-lista_anabel = db.usuarios.findOne({Nombre: "Anabel", Apellido: 'Olguín'},{Peliculas:true}).Peliculas
+lista_anabel = db.usuarios.findOne({Nombre: "Anabel", Apellido: 'Olguín'}).Peliculas
 db.usuarios.updateOne({Nombre: "Txomin"}, {$push: {Peliculas: lista_anabel}})
 
 // A la segunda película de Anabel le añado el protagonista
