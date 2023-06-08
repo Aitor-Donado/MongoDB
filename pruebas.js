@@ -143,3 +143,12 @@ db.usuarios.find()
 direccion = {Calle : "Kalea", Numero: "11A", Piso: 1, mano: "A Izq", CP: 20100, Provincia: "Gipuzkoa"}
 db.usuarios.updateOne({Nombre: "Perico"},{$set: {Direccion: direccion}})
 db.usuarios.find()
+
+db.usuarios.find({'Direccion.CP': 20100})
+
+local = {Calle : "Picasso", Numero: 27, Piso: "Bajo", CP: 20110, Provincia: "Gipuzkoa"}
+db.usuarios.updateMany({},{$set: {Local: local}})
+db.usuarios.find()
+
+local2 =  {Calle : "Gran Vía", Numero: 15, Piso: "Bajo", CP: 20012, Provincia: "Gipuzkoa"}
+
