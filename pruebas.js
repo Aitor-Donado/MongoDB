@@ -113,8 +113,33 @@ db.usuarios.find({Nombre: /\w+(?:\s\w+)+/})
 // Seleccionamos los campos que deseamos en la salida
 db.usuarios.find({Profesion: "Programador"}, {Nombre:true, Apellido:true})
 
+// O seleccionamos los que no queremos
 db.usuarios.find({Profesion: "Programador"}, {Edad:false, Profesion: false})
 
+// Esto es útil, por ejemplo, para ocultar DNI
 db.usuarios.updateOne({Nombre: "Denis", Apellido: "Almandoz"}, {$set: {DNI: "12345678J"}})
+db.usuarios.find({Profesion: "Programador"}, {DNI:false})
 
 db.usuarios.updateOne({Nombre: "Denis", Apellido: "Almandoz"}, {$unset: {DNI: true}})
+
+// Añado la clave "Direccion" a todos los usuarios (sin valor por defecto)
+db.usuarios.updateMany({},{$set: {Direccion: null}})
+
+direccion = {Calle : "Nombre de la calle", Numero: 0, Piso: null, CP: 20000, Provincia: "Gipuzkoa"}
+db.usuarios.updateMany({},{$set: {Direccion: direccion}})
+db.usuarios.find()
+
+// Pongo la dirección de Denis
+direccion = {Calle : "Iturribide", Numero: 23, Piso: 4, CP: 20012, Provincia: "Gipuzkoa"}
+db.usuarios.updateOne({Nombre: "Denis"},{$set: {Direccion: direccion}})
+db.usuarios.find()
+
+// Pongo la dirección de Txomin
+direccion = {Calle : "De la Era", Numero: 12, Piso: 1, CP: 20100, Provincia: "Gipuzkoa"}
+db.usuarios.updateOne({Nombre: "Txomin"},{$set: {Direccion: direccion}})
+db.usuarios.find()
+
+// Pongo la dirección de Txomin
+direccion = {Calle : "Kalea", Numero: "11A", Piso: 1, mano: "A Izq", CP: 20100, Provincia: "Gipuzkoa"}
+db.usuarios.updateOne({Nombre: "Perico"},{$set: {Direccion: direccion}})
+db.usuarios.find()
