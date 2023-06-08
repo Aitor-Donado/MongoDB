@@ -175,13 +175,34 @@ db.usuarios.updateMany(condicion, {$set: {Local: local2}})
 
 // Añado la clave "Películas" a todos los usuarios (sin valor por defecto)
 db.usuarios.updateMany({},{$set: {Peliculas: []}})
-// Añado un elemento a a la lista de la clave Películas
+// Añado un elemento a la lista de la clave Películas
 db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: {Titulo: "Lo que el viento se llevó", Director: "Victor Fleming"}}})
 
+// Creo más películas y las añado
 pelicula1 = {Titulo: "Regreso al Futuro", Director: "Robert Zemeckis"}
 pelicula2 = {Titulo: "Cazafantasmas", Director: "Ivan Reitman"}
+pelicula3 = {Titulo: "Amanece que no es poco", Director: "José Luis Cuerda"}
+película4 = {Titulo: "El ataque de los tomates asesinos", Director: "John De Bello"}
 
 db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: pelicula1}})
 db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: pelicula2}})
+db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: pelicula3}})
+
+//Eliminar una película de la lista de Anabel sabiendo el título
+db.usuarios.find({Nombre: "Anabel", Apellido: 'Olguín'})
+db.usuarios.updateOne({Nombre: "Anabel", Apellido: 'Olguín'}, {$pull: {Peliculas: {Titulo: "Amanece que no es poco"}}});
+db.usuarios.find({Nombre: "Anabel", Apellido: 'Olguín'})
+
+// Copio la lista de películas de Anabel y se las pongo a Txomin
+lista_anabel = db.usuarios.findOne({Nombre: "Anabel", Apellido: 'Olguín'},{Peliculas:true}).Peliculas
+db.usuarios.updateOne({Nombre: "Txomin"}, {$push: {Peliculas: lista_anabel}})
+
+// A la segunda película de Anabel le añado el protagonista
+db.usuarios.updateOne({Nombre: "Anabel"}, {$set: {"Peliculas.2.Protagonista": "Bill Murray"}})
 
 
+
+
+
+//////
+db.usuarios.findOne({Nombre: "Anabel"}, {$set :"Peliculas.$": true})
