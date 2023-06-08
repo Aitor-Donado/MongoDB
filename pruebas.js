@@ -1,6 +1,18 @@
+<<<<<<< HEAD
+=======
+// Crear la base de datos
+>>>>>>> f8f94d742154d4b95bb70cc3c2cbd6089a640578
 //use videoclubDB
 
+// Mostrar las bases de datos creadas
+//show database
+
+// VideoclubDB no aparecerá hasta que le introduzcamos datos
+
+// crear la colección
 db.createCollection('usuarios')
+// Añadir el primer dato.
+
 
 db.usuarios.insertOne({"Nombre" : "Pedro", "Apellido" : "López"})
 usuario2 = {"Nombre" : "Luis", "Apellido" : "Gómez"}
@@ -90,3 +102,4 @@ db.usuarios.find({Profesion: "Programador"}, {Edad:false, Profesion: false})
 db.usuarios.updateOne({Nombre: "Denis", Apellido: "Almandoz"}, {$set: {DNI: "12345678J"}})
 
 db.usuarios.updateOne({Nombre: "Denis", Apellido: "Almandoz"}, {$unset: {DNI: true}})
+
