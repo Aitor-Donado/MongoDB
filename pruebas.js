@@ -176,4 +176,12 @@ db.usuarios.updateMany(condicion, {$set: {Local: local2}})
 // Añado la clave "Películas" a todos los usuarios (sin valor por defecto)
 db.usuarios.updateMany({},{$set: {Peliculas: []}})
 // Añado un elemento a a la lista de la clave Películas
-db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: {Título: "Lo que el viento se llevó", Director: "Victor Fleming"}}})
+db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: {Titulo: "Lo que el viento se llevó", Director: "Victor Fleming"}}})
+
+pelicula1 = {Titulo: "Regreso al Futuro", Director: "Robert Zemeckis"}
+pelicula2 = {Titulo: "Cazafantasmas", Director: "Ivan Reitman"}
+
+db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: pelicula1}})
+db.usuarios.updateOne({Nombre: "Anabel"}, {$push: {Peliculas: pelicula2}})
+
+
