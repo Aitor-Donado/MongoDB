@@ -1,7 +1,7 @@
 // Crear la base de datos
 //use videoclubDB
 
-// Mostrar las bases de datos creadas
+//Mostrar las bases de datos creadas
 //show database
 
 // VideoclubDB no aparecerá hasta que le introduzcamos datos
@@ -72,14 +72,19 @@ db.usuarios.updateMany({Apellido : "López"}, {$rename: {Oficio: "Profesion"}})
 db.usuarios.updateMany({}, {$rename: {Oficio: "Profesion"}})
 
 // Borrar
+db.usuarios.find({Nombre: "Txomin"})
 db.usuarios.deleteOne({Nombre: "Txomin"})
 
-db.usuarios.updateMany({ Edad: { $lte: 18 }}, {$set: {Edad: 18}})
+// Poner la edad a 18 en todos los menores de edad
+db.usuarios.updateMany({ Edad: { $lt: 18 }}, {$set: {Edad: 18}})
 
+// Encontrar los usuarios apellidados López y que son mayores de 20
 db.usuarios.find({$and: [{ Edad: { $gte: 20 }},{Apellido: "López"}]})
 
+// Encontrar los usuarios apellidados López o que sean mayores de 50
 db.usuarios.find({$or: [{ Edad: { $gte: 50 }},{Apellido: "López"}]})
 
+// a los del find anterior, les cambio la profesión a Profesor
 db.usuarios.updateOne({$and: [{ Edad: { $gte: 20 }},{Apellido: "López"}]}, {$set: {Profesion: "Profesor"}})
 
 
