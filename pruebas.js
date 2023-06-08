@@ -87,18 +87,17 @@ db.usuarios.find({$or: [{ Edad: { $gte: 50 }},{Apellido: "López"}]})
 // a los del find anterior, les cambio la profesión a Profesor
 db.usuarios.updateOne({$and: [{ Edad: { $gte: 20 }},{Apellido: "López"}]}, {$set: {Profesion: "Profesor"}})
 
-
+// Busco los usuarios cuya ciudad sea uno de los valores en la lista
 db.usuarios.find({Ciudad: {$in:["San Sebastián", "Irún"]}})
 
-
+// Busco los usuarios que tengan creada la clave Profesion
 db.usuarios.find({Profesion: {$exists: false}})
 
+// A los que no la tengan, se la coloco con el valor por defecto "Parado"
 db.usuarios.updateMany({Profesion: {$exists: false}},{$set: {Profesion: "Parado"}})
 
-
+// A los mayores de 65 años les pongo la Profesión de Jubilado
 db.usuarios.updateMany({ Edad: { $gte: 65 }}, {$set: {Profesion: "Jubilado"}})
-
-db.usuarios.find().sort({Edad: -1}).limit(1)
 
 // Expresiones regulares
 db.usuarios.find({Apellido: /ez$/})
