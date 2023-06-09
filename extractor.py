@@ -1,3 +1,4 @@
+
 import json
 
   
@@ -47,12 +48,13 @@ datos_final = datos_final.T
 datos_final.columns = datos_final.iloc[0]
 datos_final = datos_final[1:]
 
-# Reiniciar los índices si es necesario
-#datos_final = datos_final.reset_index(drop=True)
 
 
-datos_final_home = datos_final.loc["home"].T
-datos_final_away = datos_final.loc["away"].T
 
-
-print(df.head())
+datos_final_home = datos_final.loc["home"]
+datos_final_away = datos_final.loc["away"]
+datos_final_home = pd.DataFrame(datos_final_home).transpose()
+datos_final_away = pd.DataFrame(datos_final_away).transpose()
+datos_final_home = datos_final_home.reset_index(drop=True)
+datos_final_away = datos_final_away.reset_index(drop=True)
+final = datos_final_home.join(datos_final_away, lsuffix='_home', how='outer', rsuffix='_away')
