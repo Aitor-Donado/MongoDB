@@ -1,9 +1,16 @@
 
 import json
 
-  
+# Obtener la carpeta en la cual se está ejecutando el archivo
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Colocar el archivo con todo su path
+archivo = os.path.join(current_dir, 'partido.json')
+print(archivo)
+
 # Apertura del archivo
-f = open('partido.json')
+f = open(archivo)
   
 # Conversión en diccionario
 data = json.load(f)
