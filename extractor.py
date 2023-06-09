@@ -58,3 +58,6 @@ datos_final_away = pd.DataFrame(datos_final_away).transpose()
 datos_final_home = datos_final_home.reset_index(drop=True)
 datos_final_away = datos_final_away.reset_index(drop=True)
 final = datos_final_home.join(datos_final_away, lsuffix='_home', how='outer', rsuffix='_away')
+
+# Guardar final en un csv
+final.to_csv("final.csv")
