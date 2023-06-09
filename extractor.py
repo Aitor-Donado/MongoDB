@@ -3,7 +3,7 @@ import json
 
   
 # Apertura del archivo
-f = open('/home/laptop/Proyectos Python/MongoDB/partido.json')
+f = open('partido.json')
   
 # Conversión en diccionario
 data = json.load(f)
